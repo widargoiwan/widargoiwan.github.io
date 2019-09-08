@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>widargo</title>
+    <link>https://widargoiwan.github.io/</link>
+    <description>Recent content on widargo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 07 Sep 2019 01:09:32 +0800</lastBuildDate>
+    
+	<atom:link href="https://widargoiwan.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Creational design patterns</title>
+      <link>https://widargoiwan.github.io/posts/creational-design-patterns/</link>
+      <pubDate>Sat, 07 Sep 2019 01:09:32 +0800</pubDate>
+      
+      <guid>https://widargoiwan.github.io/posts/creational-design-patterns/</guid>
+      <description>As was written in the previous post, design patterns can be categorised according to purpose (creational, structural, and behavioural) and scope (applying to classes or applying to objects). Today we&amp;rsquo;ll focus on creational design patterns, which have to do with instantiation and abstracting away that instantiation process. What is instantiation, though? It is the act of creating an object from a given class. Creational design patterns are then further classified according to their scope:</description>
+    </item>
+    
+    <item>
+      <title>Design patterns: what are they?</title>
+      <link>https://widargoiwan.github.io/posts/design-patterns-intro/</link>
+      <pubDate>Fri, 02 Aug 2019 10:30:00 +0800</pubDate>
+      
+      <guid>https://widargoiwan.github.io/posts/design-patterns-intro/</guid>
+      <description>Software engineering is a messy process, but so is every creative human activity. Sometimes, I do wonder whether it is true that software engineering can be said to be a branch of &amp;ldquo;engineering&amp;rdquo;. I leave that debate to another day, but in no uncertain terms, creating software is messy and often requires a lot of commitment, collaboration, and compromise from all stakeholders. In all my software engineering projects, I have not encountered a project that is smooth sailing from the onset and ends on a smooth sailing note.</description>
+    </item>
+    
+  </channel>
+</rss>
