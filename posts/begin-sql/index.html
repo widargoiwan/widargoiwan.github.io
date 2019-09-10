@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html
+  class=""
+  lang="en-us"
+  prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#"
+>
+  <head>
+    <meta charset="utf-8" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="description" content="" />
+<meta name="HandheldFriendly" content="True" />
+<meta name="MobileOptimized" content="320" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+<meta name="keywords" content="">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content="" />
+<meta property="og:title" content="Beginner SQL" />
+<meta property="og:site_name" content="widargo" />
+<meta property="og:image" content="" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image:width" content="" />
+<meta property="og:image:height" content="" />
+<meta property="og:url" content="https://widargoiwan.github.io/posts/begin-sql/" />
+<meta property="og:locale" content="en-us" />
+<meta property="article:published_time" content="2019-09-03
+" /> <meta property="article:modified_time" content="2019-09-03
+" />
+
+
+
+
+
+
+    <title>Beginner SQL</title>
+    <link rel="canonical" href="https://widargoiwan.github.io/posts/begin-sql/" />
+
+
+    <link
+  rel="stylesheet"
+  href="https://unpkg.com/tachyons@4.11.1/css/tachyons.min.css"
+/>
+
+<link rel="stylesheet" href="https://widargoiwan.github.io/css/style.css" />
+
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/highlightjs@9.12.0/styles/github-gist.css"
+/>
+
+<script src="https://kit.fontawesome.com/d3737c8002.js"></script>
+
+
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  </head>
+
+<body
+  lang="en-us"
+  class="sans-serif w-90 w-60-ns center center-ns mv2 mv5-ns"
+  itemscope
+  itemtype="http://schema.org/Article"
+>
+  
+  <span class="b">/ </span>
+  <a
+    href="https://widargoiwan.github.io/"
+    class="b bb bw1 pb1 no-underline black"
+    >widargo</a
+  >
+
+  <span class="b">/ </span>
+  <a
+    href="../"
+    class="b bb bw1 pb1 no-underline black"
+    >posts</a
+  >
+
+  <section id="main" class="mt5">
+    <h1 itemprop="name" id="title">Beginner SQL</h1>
+    <span class="f6 gray">September 3, 2019</span>
+
+    <article itemprop="articleBody" id="content" class="w-90 lh-copy">
+      
+
+<p>The Structured Query Language (SQL) or Sequel is a declarative programming language that is not Turing-complete. SQL is made up of the following components:</p>
+
+<ul>
+<li>Data definition language (DDL) that specifies information about relations.</li>
+<li>Data manipulation language (DML) that provides CRUD capabilities.</li>
+</ul>
+
+<p>The DDL provides the following features, which are sometimes listed under SQL as separate components as well.</p>
+
+<ul>
+<li>Specifying integrity constraints.</li>
+<li>Defining views of the data.</li>
+<li>Specifying the start and end of transactions.</li>
+<li>Specifying access rights to relations and views.</li>
+</ul>
+
+<p>[TOC]</p>
+
+<h2 id="what-is-the-data-definition-language-ddl">What is the data definition language (DDL)?</h2>
+
+<p>The data definition language specifies information about relations. Such information include:</p>
+
+<ul>
+<li>Schema for each relation.</li>
+<li>Type of values associated with each attribute, i.e., the domain.</li>
+<li>Integrity constraints on the data.</li>
+<li>Set of indices to be maintained for each relation.</li>
+<li>Security and authorisation information for each relation.</li>
+<li>Physical storage structure of each relation on the disc.</li>
+</ul>
+
+<h3 id="types-in-sql">Types in SQL</h3>
+
+<p>There are a few basic types in SQL. In database jargon, these types are known as the domains of the attributes.</p>
+
+<ul>
+<li><code>char(n)</code> is a fixed-length character string, with user-specified length $n$.</li>
+<li><code>varchar(n)</code> is a variable-length character string, with user-specifed length $n$.</li>
+<li><code>int</code>  is an integer, which is a finite subset of the infinite set of integers. The range ultimately depends on the machine implementation, but usually it is $\pm2^{31} - 1$ .</li>
+<li><code>smallint</code> is a small integer.</li>
+<li><code>numeric(p, d)</code> is a fixed-point number, with user-specified precision of $p$ digits and $d$ digits to the right of the decimal point.</li>
+<li><code>float(n)</code> is a floating-point number, with a user-specified precision of <em>at least</em> $n$ digits.</li>
+</ul>
+
+<h3 id="basic-sql-syntax">Basic SQL syntax</h3>
+
+<h4 id="create-relation">Create relation</h4>
+
+<p>An SQL relation is defined using the <code>create table</code> command. For instance,</p>
+
+<pre><code class="language-sql">create table TABLE_NAME
+	(value_1	domain_1	not null,
+   value_2	domain_2,
+   value_3	domain_3,
+   ... etc.
+  primary key (X),
+  foreign key (Y) references TABLE_Y
+);
+
+</code></pre>
+
+<h4 id="insert-tuple">Insert tuple</h4>
+
+<pre><code class="language-SQL">insert into TABLE_NAME values (X, Y, Z);
+</code></pre>
+
+<h4 id="delete-tuple-s">Delete tuple(s)</h4>
+
+<p>Tuples that match a condition can be deleted:</p>
+
+<pre><code class="language-SQL">delete from TABLE_NAME where CONDITION
+</code></pre>
+
+<p>Or we can delete all the tuples.</p>
+
+<pre><code class="language-SQL">delete from TABLE_NAME
+</code></pre>
+
+<h4 id="drop-table">Drop table</h4>
+
+<p>Dropping a table means that the relation is deleted entirely.</p>
+
+<pre><code class="language-SQL">drop table TABLE_NAME
+</code></pre>
+
+<h4 id="alter">Alter</h4>
+
+<p>We can add, remove, and modify attributes (columns) and table/column constraints. An example is provided below:</p>
+
+<pre><code class="language-sql">ALTER TABLE table_name
+ADD attribute domain;
+
+ALTER TABLE table_name
+DROP COLUMN attribute;
+
+-- Alter/modify based on different SQL engine
+ALTER TABLE table_name
+ALTER/MODIFY attribute domain;
+</code></pre>
+
+<h2 id="select"><code>select</code></h2>
+
+<p>A typical SQL query has the form:</p>
+
+<pre><code class="language-SQL">select ATTRIBUTE_1,
+	ATTRIBUTE_2,
+	ATTRIBUTE_3
+from RELATION_1,
+	RELATION_2,
+	RELATION_3
+where CONDITION
+</code></pre>
+
+<p>The result of an SQL query is a relation. The <code>select</code> clause lists the attributes desired in the result of a query. It corresponds to the projection operation, $\sigma_pc$ of relational algebra. The names in SQL are also case-insensitive.</p>
+
+<p>SQL allows duplicates in relations and query results. To force the elimination of duplicates, we have to use the keyword <code>distinct</code> after <code>select</code>.</p>
+
+<pre><code class="language-SQL">select distinct {ATTRIBUTES} from {RELATIONS} where CONDITION
+</code></pre>
+
+<p>An asterisk in the <code>select</code> clause denotes all attributes.</p>
+
+<pre><code class="language-sql">select * from {RELATIONS} where CONDITION
+</code></pre>
+
+<p>An attribute can also be a literal with no <code>from</code> clause. In this case, the result is a table with one column and a single row with the value &lsquo;123&rsquo;.</p>
+
+<pre><code class="language-sql">select '123'
+</code></pre>
+
+<p>We can give a column name with <code>as</code>. The <code>as</code> clause is also used to rename column names.</p>
+
+<pre><code class="language-sql">select '123' as COLUMN_NAME
+</code></pre>
+
+<p>An attribute can also be a literal combined with the <code>from</code> clause.</p>
+
+<pre><code class="language-sql">select '123' from TABLE_NAME
+</code></pre>
+
+<p>In which case, there will be $n$ number of rows with the value <code>123</code>, with $n$ corresponding to the number of tuples in the relation. The <code>select</code> clause may contain arithmetic expressions that involve operations.</p>
+
+<h4 id="where"><code>where</code></h4>
+
+<p>The <code>where</code> clause specifies conditions that the result must satisfy. This corresponds to the selection predicate. SQL allows the use of logical operators <code>and</code>, <code>or</code> and <code>not</code>. The operands of the logical connectives may be expressions that involve the comparison operators (e.g., less than, less than or equal to, etc).</p>
+
+<p>Comparisons can be applied to the results of arithmetic expressions. Arithmetic expressions take precedence over these logical connectives.</p>
+
+<h4 id="from"><code>from</code></h4>
+
+<p>The <code>from</code> clause lists the relations involved in the query. The <code>from</code> clause corresponds to the Cartesian product of the relational algebra. For example, in the following code:</p>
+
+<pre><code class="language-sql">select * from X, Y
+</code></pre>
+
+<p>The <code>from</code> clause generates every possible X-Y relation pair, with attributes from <em>both</em> relations. For common attributes, the attributes in the resulting table are renamed using the relation name, e.g., if there is <code>ID</code> in both X and Y, then they will be <code>X.ID</code> and <code>Y.ID</code>.</p>
+
+<p>The Cartesian product is not very useful directly, but it is useful when combined with the <code>where</code> clause, which is the selection operator. For example,</p>
+
+<pre><code class="language-sql">select NAME from INSTRUCTORS, COURSES
+where INSTRUCTORS.ID = COURSES.ID
+	and INSTRUCTORS.DEPT = 'computer science'
+</code></pre>
+
+<h4 id="rename"><code>rename</code></h4>
+
+<p>Renaming relations and attributes are done using the <code>as</code> clause.</p>
+
+<pre><code class="language-sql">select distinct P.NAME from T, X as P
+where T.ID = P.ID
+</code></pre>
+
+<h4 id="order-by"><code>order by</code></h4>
+
+<p>The clause <code>order by</code> sorts the order by which</p>
+
+<h4 id="group-by"><code>group by</code></h4>
+
+<p>Given a transaction:</p>
+
+<pre><code class="language-sql">SELECT r_name, min(price), max(price)
+FROM Sells
+GROUP BY r_name
+</code></pre>
+
+<p>Two tuples $t$ and $t&rsquo;$ belong to the same group if the following expression evaluates to true:</p>
+
+<pre><code>t.a1 IS NOT DISTINCT FROM t'.a1 AND ... AND t.aN IS NOT DISTINCT FROM t'.an
+</code></pre>
+
+<p>In less convoluted language, it basically means that the <code>group by</code>  operator &ldquo;collapses&rdquo; the tuples into a group based on a given attribute. <em>Only</em> aggregate functions can be applied to the other attributes within this group. If an aggregate function appears in the <code>select</code> clause and there is no <code>group by</code> operator, then the <code>select</code> clause must not contain any column that is not in an aggregated expression.</p>
+
+<h4 id="having"><code>having</code></h4>
+
+<p>The <code>having</code> operator can be used under the following 3 situations only:</p>
+
+<ol>
+<li>A appears in the <code>group by</code> (see above) clause, or</li>
+<li>A appears in an aggregated expression in the <code>having</code> clause, or</li>
+<li>The primary or candidate key of R appears in the <code>group by</code> clause.</li>
+</ol>
+
+<h3 id="string-operations">String Operations</h3>
+
+<p>SQL includes a string-matching operator for comparisons on character strings. The operator <code>like</code> uses patterns that are described using two special characters:</p>
+
+<ul>
+<li><code>%</code> matches any substring.</li>
+<li><code>_</code> matches any character.</li>
+</ul>
+
+<p>The patterns are <em>case-sensitive</em>. There are also a variety of string operations, such as:</p>
+
+<ul>
+<li>Concatenation using <code>||</code>.</li>
+<li>Converting from upper to lower case.</li>
+</ul>
+
+<p>There are certain string operations which are platform-specific. Thus, one should refer to the documentation.</p>
+
+<h3 id="set-operations">Set Operations</h3>
+
+<p>SQL supports basic set operations like union ($\cup$), intersect ($\cap$), and except ($-$). <code>union</code>, <code>intersect</code> and <code>except</code> eliminate duplicate records. Appending an <code>all</code> keyword to these commands preserves duplicate records. All set operations are subject to the same two conditions of union compatibility as in relational algebra:</p>
+
+<ol>
+<li>There are the same number of attributes, and</li>
+<li>The corresponding attributes have the same domains.</li>
+</ol>
+
+<p>In other words, the same columns must be present.</p>
+
+<h4 id="union"><code>union</code></h4>
+
+<p>The <code>union</code> operator combines the results of two queries into a single table of all matching rows.</p>
+
+<h4 id="intersect"><code>intersect</code></h4>
+
+<p>The <code>intersect</code> operator takes the results of two queries and returns only rows that appear in both result sets.</p>
+
+<h4 id="except"><code>except</code></h4>
+
+<p>The <code>except</code> operator takes the distinct rows of one query and returns the rows that do not appear in a second result set. The <code>except all</code> operator does not remove duplicates. The <code>except</code> operator does not distinguish between <code>null</code>s.</p>
+
+<h3 id="null-values">Null Values</h3>
+
+<p>It is possible for tuples to have <code>null</code> value for some of their attributes. <code>null</code> signifies an unknown value, or that a value doesn&rsquo;t exist. The result of <em>any</em> arithmetic expression involving a <code>null</code> is <code>null</code>. The predicate <code>is null</code> can be used to check for null valkues. The predicate <code>is not null</code> only succeeds if the value on which it is applied is not null (duh).</p>
+
+<p>SQL treats as <em>unknown</em> the result of any comparison involving a <code>null</code> value, unless the predicate <code>is null</code> or <code>is not null</code> is used.</p>
+
+<p>Since the predicate in a <code>where</code> clause may involve Boolean operations, the definitions of Boolean operations needs to be extended to deal with the value of unknown. That is to say:</p>
+
+<h4 id="and">and</h4>
+
+<ul>
+<li><code>and</code> – ($\text{True} \and \text{Unknown}=\text{Unknown}$</li>
+<li><code>and</code> – ($\text{False} \and \text{Unknown}=\text{False}$</li>
+<li><code>and</code> – ($\text{Unknown} \and \text{Unknown}=\text{Unknown}$</li>
+</ul>
+
+<h4 id="or">or</h4>
+
+<ul>
+<li><code>or</code> – ($\text{True} \or \text{Unknown}=\text{True}$</li>
+<li><code>or</code> – ($\text{False} \or \text{Unknown}=\text{Unknown}$</li>
+<li><code>or</code> – ($\text{Unknown} \or \text{Unknown}=\text{Unknown}$</li>
+</ul>
+
+<p>The result of the <code>where</code> clause predicate is treated as false if it evaluates to unknown.</p>
+
+<h3 id="aggregate-functions">Aggregate Functions</h3>
+
+<p>Aggregate functions operate on the multiset of values of a column of a relation, and return a <em>value</em>, instead of a <em>relation</em> as would relational functions. The most common ones are:</p>
+
+<ul>
+<li>average = <code>avg</code></li>
+<li>minimum = <code>min</code></li>
+<li>maximum = <code>max</code></li>
+<li>sum = <code>sum</code></li>
+<li>number of values = <code>count</code></li>
+</ul>
+
+<p>We may combine aggregate functions with the <code>as</code> clause to rename the aggregate function results:</p>
+
+<pre><code class="language-sql">select NAME, avg(SALARY) as avg_salary
+from INSTRUCTOR
+group by NAME
+</code></pre>
+
+<p>Attributes in the <code>select</code> clause outside of aggregate functions must appear in the <code>group by</code> list. For example,</p>
+
+<pre><code class="language-sql">select NAME, ID, avg(SALARY) as avg_salary
+from INSTRUCTOR
+group by NAME
+</code></pre>
+
+<p>would be incorrect but</p>
+
+<pre><code class="language-sql">select NAME, ID, avg(SALARY) as avg_salary
+from INSTRUCTOR
+group by NAME, ID
+</code></pre>
+
+<p>is correct.</p>
+
+<h4 id="having-1"><code>having</code></h4>
+
+<p>The <code>having</code> clause is similar to the <code>where</code> clause. It is the aggregate analogue to the <code>where</code> clause.</p>
+
+<pre><code class="language-sql">select NAME, avg(SALARY) as avg_salary
+from INSTRUCTOR
+group by NAME
+having avg(salary) &gt; X
+</code></pre>
+
+<p>Note that in predicates in the <code>having</code> clause are applied <strong>after the formation of groups</strong>, whereas predicates in the <code>where</code> clause are applied <strong>before the formation of groups</strong>.</p>
+
+<h3 id="nested-queries-and-subqueries">Nested Queries and Subqueries</h3>
+
+<p><em>This segment is considered &lsquo;intermediate&rsquo;.</em> Readers are welcome to skip it and return later once you have covered the other sections.</p>
+
+<p>A subquery is a <code>select X from Y where Z</code>  expression that is nested within another query. SQL provides a mechanism for the nesting of subqueries. The nesting can be done in a basic SQL query: <code>select X from Y where Z</code> by:</p>
+
+<ul>
+<li><code>from &lt;subquery&gt;</code> clause may be replaced by any valid subquery.</li>
+<li><code>where</code> clause may replaced by an expression of the form <code>B {operation} &lt;subquery&gt;</code>.
+
+<ul>
+<li><code>B</code> is an attribute and <code>&lt;operation&gt;</code> to be defined later.</li>
+</ul></li>
+<li><code>select</code> where $A_i$ (where $i$ may be any number of attributes) may be replaced by a subquery that <em>generates a single value</em>.</li>
+</ul>
+
+<p>For example:</p>
+
+<pre><code class="language-sql">select NAME
+from (select NAME, ID from Y)
+where (B &lt;operation&gt; &lt;subquery&gt;)
+</code></pre>
+
+<p>Queries with subquery expressions are known as nested queries. A subquery expression is referred to as an inner query that is nested within an outer query. Scoping rules therefore apply.</p>
+
+<ol>
+<li>A tuple variable declared in a subquery or query Q can be used only in Q and any subquery nested <em>within</em> Q.</li>
+<li>If a tuple variable is declared both locally in a subquery <em>Q</em> and in an outer query, the local declaration applies in Q.</li>
+</ol>
+
+<h5 id="non-correlated-nested-queries">Non-correlated nested queries</h5>
+
+<p>A nested query with a subquery that references a tuple variable declared in an outer query is called a correlated nested query. For example,</p>
+
+<pre><code class="language-sql">SELECT DISTINCT c_name
+FROM likes as L
+WHERE EXISTS (
+    SELECT 1
+    FROM sells as S
+    WHERE (S.name = L.name));
+</code></pre>
+
+<h4 id="usage-of-subqueries">Usage of subqueries</h4>
+
+<p>Non-scalar subquery expressions can be used in different parts of SQL queries:</p>
+
+<ul>
+<li><code>where</code> with <code>exists/not exists</code>, <code>in</code>, <code>some/any</code>, <code>all</code>, and <code>unique</code>.</li>
+<li><code>from</code> with a nested <code>select</code> clause.</li>
+<li><code>having</code></li>
+</ul>
+
+<p>Subqueries can be used to carry out database modifications also.</p>
+
+<h4 id="exists-and-not-exists"><code>exists</code> and <code>not exists</code></h4>
+
+<p>The <code>exists</code> returns true if the result subquery is non-empty. Otherwise, it returns false. The <code>exists</code> subquery can be used to check if there is <em>at least one</em> tuple in the <code>select</code> subquery.</p>
+
+<pre><code class="language-SQL">-- Also demonstrating the use of the 'as' keyword
+SELECT DISTINCT c_name
+FROM t_table AS t_1
+WHERE EXISTS (
+    	SELECT c_name
+   		FROM b_table as t_2
+    	WHERE t_1.id = t_2.id);
+</code></pre>
+
+<p>The logical opposite of <code>exists</code> is <code>not exists</code>.</p>
+
+<h4 id="in"><code>in</code></h4>
+
+<p>The subquery must return exactly <em>one column</em>. The <code>in</code> operator will return false if the result of a subquery is empty. Otherwise, it will return the result of the Boolean expression: $((v = v_1) \or (v = v_2) \or \dots \or (v = v_n))$, where $v$ is the result of the expression.</p>
+
+<p>In other words, the <code>in</code> operator checks if there exists some attribute exists in the given subquery.</p>
+
+<pre><code class="language-sql">SELECT * FROM customers
+WHERE country IN (
+    SELECT country
+    FROM trading_countries AS t_country
+    WHERE t_country.rating &gt;= 5
+);
+</code></pre>
+
+<p>The <code>in</code> and <code>exists</code> operators are similar, but actually fundamentally different.</p>
+
+<ul>
+<li>The <code>exists</code> operator will tell you whether a query returned any results, i.e., is the condition <em>not empty</em>?</li>
+<li>The <code>in</code> operator will compare one value to several and check if there is a match, i.e., is there a value in that matches?</li>
+</ul>
+
+<h5 id="another-form-of-in">Another form of <code>in</code></h5>
+
+<p>The other form of <code>in</code> is as follows.</p>
+
+<pre><code class="language-sql">SELECT * FROM customers
+WHERE country IN ('Germany', 'US', 'Singapore');
+</code></pre>
+
+<h4 id="unique"><code>unique</code></h4>
+
+<p>This returns false if the result subquery contains at least two distinct tuples such that $t_1 = t_2$ evaluates to true. The <code>unique</code> operator is not widely supported.</p>
+
+<h4 id="some-any"><code>some</code>/<code>any</code></h4>
+
+<p>The <code>some</code> clause can be used as well. The <code>some</code> clause is defined as follows: there exists some tuple in a given relation such that the condition is true for it. The subquery must return exactly one column. It returns false if the result of the subquery is empty. Otherwise, it will return the result of the Boolean expression: $((v \texttt{op} v_1) \or (v \texttt{op} v_2) \or \dots \or (v \texttt{op} v_n))$, where $v$ is the result of the expression.</p>
+
+<pre><code class="language-sql">select name from instructor
+where salary &gt; some (select salary from instructor where dept = 'CS')
+</code></pre>
+
+<p>The <code>all</code> clause can be used as well, wherein the predicate must be true for a given condition in all of the tuples.</p>
+
+<h4 id="all"><code>all</code></h4>
+
+<p>The logical extension of <code>some</code> or <code>any</code> to everything in the column. In other words, all the tuples must match.</p>
+
+<pre><code class="language-sql">select name from instructor
+where salary &gt; all (select salary from instructor where dept = 'CS')
+</code></pre>
+
+<h4 id="with-clause"><code>with</code> clause</h4>
+
+<p>The <code>with</code> clause provides a way of defining a temporary relation whose definition is available only to the query in whcih the <code>with</code> clause occurs.</p>
+
+<pre><code class="language-sql">with thing as
+	(&lt;subquery&gt;)
+select attr
+from department, max_budget
+where department.budget = max_budget.value
+</code></pre>
+
+<p>The values in the brackets following the <code>with</code> clause states the attributes that are taken from the subquery.</p>
+
+<h4 id="scalar-subqueries">Scalar subqueries</h4>
+
+<p>A scalar subquery is a subquery that returns at most one tuple with one column. A scalar subquery will raise a runtime error if the subquery returns more than one result tuple. If the subquery&rsquo;s result is empty, its return value is then <code>null</code>.</p>
+
+<h3 id="a-summary-of-the-select-clause">A summary of the <code>select</code> clause</h3>
+
+<pre><code class="language-sql">SELECT	DISTINCT select-list
+FROM		from-list
+WHERE		where-condition
+GROUP BY	groupby-list
+HAVING		having-condition
+ORDER BY	orderby-list
+LIMIT		limit-specification
+</code></pre>
+
+<ol>
+<li>Compute the cross-product of tables in <code>from-list</code>.</li>
+<li>Select the tuples in the cross-product that evaluate to true for the <code>where-condition</code>.</li>
+<li>Partition the selected tuples into groups using the <code>groupby-list</code>.</li>
+<li>Select the groups that evaluate to true for having the <code>having-condition</code> condition, which acts using aggregate functions <em>only</em>.</li>
+<li>For each selected group, generate an output tuple by selecting or computing the attributes or expressions that appear in the <code>select-list</code>.</li>
+<li>Remove any duplicate output tuples.</li>
+<li>Sort the output tuples based on the <code>orderby-list</code>.</li>
+<li>Remove and trim the number of tuples based on the <code>limit-specification</code>.</li>
+</ol>
+
+<h2 id="data-modification-language">Data Modification Language</h2>
+
+<h3 id="deletion">Deletion</h3>
+
+<h3 id="insertion">Insertion</h3>
+
+<h3 id="update">Update</h3>
+
+<p>The basic update syntax is as such.</p>
+
+<pre><code class="language-sql">update TABLE_NAME
+set attr = new_value
+where attr_b = value_b
+</code></pre>
+
+<h4 id="conditional-updates-with-case">Conditional updates with <code>case</code></h4>
+
+<pre><code class="language-sql">update TABLE_NAME
+set ATTRIBUTE =
+	case
+		when COND_1 then VALUE
+		when COND_2 then VALUE
+		else VALUE
+	end
+</code></pre>
+
+<h4 id="updates-with-scalar-subqueries">Updates with scalar subqueries</h4>
+
+<p>Scalar subqueries may also be used in the <code>case</code>.</p>
+
+<pre><code class="language-sql">update TABLE_NAME
+set ATTRIBUTE =
+	(select ATTRIBUTE
+		from TABLE_NAME
+		where &lt;CONDITION&gt;);
+</code></pre>
+
+<h3 id="transactions">Transactions</h3>
+
+<p>A transaction consists of one or more update/retrieval operations, i.e., SQL statements. They are an abstraction to represent a logical unit of work. The <code>begin</code> command starts a new transaction, and each transaction <em>must</em> end with either a <code>commit</code> or <code>rollback</code>. For example,</p>
+
+<pre><code class="language-sql">begin;
+update TABLE_NAME
+set attr = new_value
+where attr_b = value_b;
+
+-- Do other things
+commit;
+</code></pre>
+
+<p>The reason for transactions is to ensure that the database maintains ACID principles.</p>
+
+<ol>
+<li><strong>Atomicity</strong>: either all the effects of the transactions are reflected in the database, or none are. In database parlance, <em>atomicity</em> is a transaction that is an indivisible and irreducible series of database operations such that either all occur or nothing occurs.</li>
+<li><strong>Consistency</strong>: the transaction preserves the consistency of the database.</li>
+<li><strong>Isolation</strong>: the transaction is isolated from the effects of other concurrent transaction executions.</li>
+<li><strong>Durability</strong>: the effects of a committed transaction persists in the database even in the presence of system failure.</li>
+</ol>
+
+<h4 id="atomicity">Atomicity</h4>
+
+<p>A guarantee of atomicity prevents updates to the database occurring only partially, which may cause greater problems than rejecting the whole series outright. As a consequence, the transaction cannot be observed to be in progress by another database client.</p>
+
+<p>At one moment, it is observed that nothing has happened, and at the next it the <em>entire transaction</em> has occurred in whole.</p>
+
+<blockquote>
+<p><strong>Banking transfers: an analogy</strong></p>
+
+<p>A good analogy is a banking transfer. For example, if a person transfers $1,000 from Bank A to Bank B, he expects that the entire transfer is made, or not made at all.</p>
+</blockquote>
+
+<h4 id="consistency">Consistency</h4>
+
+<p>A guarantee of consistency means that any database transaction must change the affected data <em>only in allowed ways</em>. In other words, the constraints on the database must be respected by the transaction. Of course, it does not guarantee the correctness of the transaction in all ways the programmer had intended, but merely that any programming errors cannot result in the violation of any defined database constraints.</p>
+
+<h4 id="isolation">Isolation</h4>
+
+<p>Isolation determines how transaction integrity is visible to other users and systems. Typically, it is defined on a database level <em>how</em> or <em>when</em> the transactional changes are made visible to other users or clients. Concurrency control is used to handle isolation and guarantee related correctness.</p>
+
+<blockquote>
+<p><strong>Banking transfers (again!)</strong></p>
+
+<p>When a transfer is made from Bank A to Bank B, when is the value of the account in Bank B updated and the changes shown? This is usually after the transaction is completed.</p>
+</blockquote>
+
+<h4 id="durability">Durability</h4>
+
+<p>A guarantee of durability means that transactions that have committed will survive permanently. Durability can be achieved by flushing the transaction to non-volatile storage before acknowledging commitment.</p>
+
+<h3 id="constraint-checking">Constraint Checking</h3>
+
+<p>By default, constraints are checked immediately at the end of the SQL statement execution. Any violation will cause the statement to be <em>rollbacked</em>. However, constraint checking can also be deferred to the end of transaction execution. In this scenario, any violation will cause the transaction to be <em>aborted</em>.</p>
+
+<p>The type of constraint checking can be specified as part of constraint declaration, or configured using set constraints.</p>
+
+<h4 id="handling-foreign-key-constraint-violations">Handling foreign key constraint violations</h4>
+
+<p>Deletion or update of a referenced tuple can potentially violate a foreign key constraint. The SQL specification allows us to state what happens to tuples that are in the referencing relation.</p>
+
+<pre><code class="language-sql">FOREIGN KEY (a, b, c) REFERENCES t(d, e, f) ON DELETE/UPDATE { action }
+</code></pre>
+
+<p>There are 5 actions we can specify:</p>
+
+<ol>
+<li><code>no action</code>: rejects the delete/update if it violates the constraint. In some database systems, it is different from <code>restrict</code> because <code>no action</code> is a deferred check.</li>
+</ol>
+
+<blockquote>
+<p>A deferred check is a deferred transaction, which is a transaction that is uncommitted when the roll forward phase finishes and that has encountered an error that prevents it from being rolled back. Because the transaction cannot be rolled back, it is <em>deferred</em>.</p>
+
+<p>Generally, a deferred transaction occurs because, while the database was being rolled forward, an I/O error prevented reading a page that was required by the transaction. The database administrator has to take steps to move the transaction out of <code>deferred</code> state. However, that is beyond the scope of this document.</p>
+</blockquote>
+
+<ol>
+<li><p><code>restrict</code>: similar or identical to <code>no action</code>. In MySQL, it is equivalent to <code>no action</code>.</p></li>
+
+<li><p><code>cascade</code>: propagates the delete/update transaction to referencing tuples.</p></li>
+
+<li><p><code>set default</code>: updates foreign keys of referencing tuples to some default value.</p></li>
+
+<li><p><code>set null</code>: updates foreign keys of referencing tuples to <code>null</code> value.</p></li>
+</ol>
+
+<h2 id="views">Views</h2>
+
+<p>A view defines a virtual relation that can be used for querying.</p>
+
+<pre><code class="language-sql">CREATE VIEW course_info ()
+</code></pre>
+
+    </article>
+  </section>
+
+  <footer>
+    <div>
+      <p class="f6 gray mt6 lh-copy">
+        
+      </p>
+    </div>
+  </footer>
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/highlight.min.js"></script>
+
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+  </body>
+</html>

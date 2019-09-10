@@ -86,7 +86,73 @@
     <span class="f6 gray">September 9, 2019</span>
 
     <article itemprop="articleBody" id="content" class="w-90 lh-copy">
-      <p>Conditional expressions allow us to use insert if/else logic into our <code>SELECT</code> statements. In Postgres (and SQL in general, since this is not a Postgres-specific thing), this is done with the <code>CASE</code> modifier, which comes after the <code>SELECT</code> clause.</p>
+      
+
+<h2 id="conditional-expressions">Conditional expressions</h2>
+
+<p>Conditional expressions allow us to use insert if/else logic into our <code>SELECT</code> statements. In Postgres (and SQL in general, since this is not a Postgres-specific thing), this is done with the <code>CASE</code> modifier, which comes after the <code>SELECT</code> clause. Recall the syntax for the <code>SELECT</code> clause:</p>
+
+<pre><code class="language-sql">SELECT (DISTINCT) *
+FROM relation
+WHERE cond_1
+GROUP BY attrb_1
+HAVING cond_2
+ORDER BY attrb_2
+LIMIT num
+</code></pre>
+
+<p>Conditional expressions come after the <code>SELECT</code> statement, with the <code>CASE</code> modifier:</p>
+
+<pre><code class="language-sql">SELECT name, CASE
+  WHEN cond_1 THEN do_1
+  WHEN cond_2 THEN do_2
+  WHEN cond_3 THEN do_3
+  ELSE do_else
+END AS grade
+FROM table;
+</code></pre>
+
+<p>Within each <code>cond_n</code>, we can use Boolean operators as well. For example, we can write the second line as <code>WHEN (cond_1a) OR (cond_1b)</code> to express an OR conditional.</p>
+
+<p>The <code>do_n</code> is reflected in the resultant table as a separate attribute (column) called <code>grade</code>, which is indicated by the part on <code>END AS grade</code>.</p>
+
+<p>The conditional expressions allow us to perform what is known as null analysis, which is just a fancy name for using <code>null</code> or some <code>false</code> value as the <code>THEN</code> value. For instance,</p>
+
+<pre><code class="language-sql">SELECT CASE
+  WHEN cond_1 THEN NULL
+  ELSE 'fail'
+END AS result
+FROM quizzes
+</code></pre>
+
+<p>This is the same as:</p>
+
+<pre><code class="language-sql">SELECT NULLIF (cond_1) FROM table
+</code></pre>
+
+<p>In this case, <code>cond_1</code> would be something like <code>A = B</code>.</p>
+
+<h2 id="coalescing-columns-into-a-single-column">Coalescing columns into a single column</h2>
+
+<p>The <code>COALESCE</code> keyboard can then &ldquo;collapse&rdquo; (they should have just chosen this word as the keyword instead) by returning the first non-null value in its argument. <code>null</code> will be returned <em>only if</em> all of the arguments are <code>null</code>. For example,</p>
+
+<pre><code>| col_1 | col_2 | col_3 |
+| ----- | ----- | ----- |
+|   a   | null  | pass  |
+|   b   | null  | fail  |
+|   c   | null  | null  |
+| ----- | ----- | ----- |
+</code></pre>
+
+<p>If we call <code>SELECT col_1, COALESCE (col_2, col_3) AS col_new FROM table</code>, then we will get the following table.</p>
+
+<pre><code>| col_1 | col_new |
+| ----- | ------- |
+|   a   | pass    |
+|   b   | fail    |
+|   c   | null    |
+| ----- | ------- |
+</code></pre>
 
     </article>
   </section>
