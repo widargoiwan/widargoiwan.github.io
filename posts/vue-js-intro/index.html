@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html
+  class=""
+  lang="en-us"
+  prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#"
+>
+  <head>
+    <meta charset="utf-8" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="description" content="" />
+<meta name="HandheldFriendly" content="True" />
+<meta name="MobileOptimized" content="320" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+<meta name="keywords" content="">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content="" />
+<meta property="og:title" content="A Vue of things" />
+<meta property="og:site_name" content="widargo" />
+<meta property="og:image" content="" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image:width" content="" />
+<meta property="og:image:height" content="" />
+<meta property="og:url" content="https://widargoiwan.github.io/posts/vue-js-intro/" />
+<meta property="og:locale" content="en-us" />
+<meta property="article:published_time" content="2019-09-08
+" /> <meta property="article:modified_time" content="2019-09-08
+" />
+
+
+
+
+
+
+    <title>A Vue of things</title>
+    <link rel="canonical" href="https://widargoiwan.github.io/posts/vue-js-intro/" />
+
+
+    <link
+  rel="stylesheet"
+  href="https://unpkg.com/tachyons@4.11.1/css/tachyons.min.css"
+/>
+
+<link rel="stylesheet" href="https://widargoiwan.github.iocss/style.css" />
+
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/highlightjs@9.12.0/styles/github-gist.css"
+/>
+
+<script src="https://kit.fontawesome.com/d3737c8002.js"></script>
+
+
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  </head>
+
+<body
+  lang="en-us"
+  class="sans-serif w-90 w-60-ns center center-ns mv2 mv5-ns"
+  itemscope
+  itemtype="http://schema.org/Article"
+>
+  
+  <span class="b">/ </span>
+  <a
+    href="https://widargoiwan.github.io"
+    class="b bb bw1 pb1 no-underline black"
+    >widargo</a
+  >
+
+  <span class="b">/ </span>
+  <a
+    href="../"
+    class="b bb bw1 pb1 no-underline black"
+    >posts</a
+  >
+
+  <section id="main" class="mt5">
+    <h1 itemprop="name" id="title">A Vue of things</h1>
+    <span class="f6 gray">September 8, 2019</span>
+
+    <article itemprop="articleBody" id="content" class="w-90 lh-copy">
+      
+
+<p>I previously worked on a website application using <a href="https://getbootstrap.com">Bootstrap</a> and <a href="https://jquery.com">jQuery</a>. So naturally I gravitate towards these frameworks whenever I do web coding. But it turns out that I never considered <a href="https://vuejs.org">Vue.js</a> before, and I always thought of Vue.js as something like Bootstrap (I&rsquo;m wrong, by the way). Vue.js is something more like jQuery in addition to other equally impressive frameworks like <a href="https://reactjs.org">React</a> and <a href="https://angular.io">Angular</a>. I actually wanted to learn React on my own, but since I have to use Vue this time around, I decided to learn it instead.</p>
+
+<p>All web frameworks have one thing in mind: binding method to DOM events. In jQuery, this is done using a dot syntax:</p>
+
+<pre><code class="language-javascript">$('#element_id').on('event', function() {
+  /* ... */}
+);
+</code></pre>
+
+<p>To me, this is quite intuitive because I&rsquo;ve been working using jQuery for some time already, thus when I first saw how Vue.js did this, I did not really fancy it.</p>
+
+<pre><code class="language-javascript">var app = new Vue({
+  el: '#element_id',
+  data: {  
+    message: 'An example'
+  },
+  methods: {
+    do_it: function () {
+      /* ... */
+    }
+  }
+})
+</code></pre>
+
+<p>It expresses very much the same thing that the above jQuery snippet does. However, there are fundamental differences that undergird the difference in syntax. Vue.js uses a Model-View-ViewModel architecture, which evolved from the traditional Model-View-Controller (MVC) architecture that was first pioneered by Rails.</p>
+
+<p><img src="/vue-js-intro-mvvm.png" alt="The Model-View-ViewModel or MVVM architecture" /></p>
+
+<p>In the MVVM architecture,</p>
+
+<ul>
+<li>The view interacts with the user. It is the UI.</li>
+<li>The view-model contains all of the application&rsquo;s data.</li>
+<li>The model retains the persistence of data.</li>
+</ul>
+
+<p>There is a binding of data between the view and view-model with a <em>binder</em>. The binder exposes data to the view as properties. Views then interact with the data by calling methods that are exposed by the binder. The view-model replaces the controller. The reason why the controller can now be replaced is because of the ability of JavaScript/HTML to do asynchronous updates. This allows the application to be reactive because it can update the user on components, rather than sending out a server request to the backend everytime there is a change. Of course, the backend can still serve up a database running on the server, and this would still constitute the &lsquo;model&rsquo;.</p>
+
+<p>In this post, I will only cover the very fundamental basics of Vue. The neat thing about Vue is that it is a progressive framework, which means that there&rsquo;s just enough to bootstrap an application, but it comes with batteries included so that we can build a full-fledged web application if necessary.</p>
+
+<h2 id="basics">Basics</h2>
+
+<p>Usually, each web page contains one Vue application instance. When this application is instantiated, it starts the Vue lifecycle. What happens during the life cycle is that Vue creates observers for the data in the view-model, renders the HTML and makes a virtual copy of the DOM and then mounted onto the DOM, starts an event loop to monitor the DOM, before finally entering the &lsquo;destructive phase&rsquo;, wherein all the observers, event listeners, and child components are destroyed and the entire app is then terminated.</p>
+
+<pre><code class="language-javascript">var vm = new Vue({
+  // options
+})
+</code></pre>
+
+<p>The fourfold process is:</p>
+
+<ol>
+<li>Create observers</li>
+<li>Mount the DOM</li>
+<li>Create the event loop (updates are hooks)</li>
+<li>Destruction</li>
+</ol>
+
+<h3 id="binding-dom-events">Binding DOM events</h3>
+
+<p>We ensure interactivity by binding JavaScript methods to DOM events, such as a user clicking on a button. This is the same in jQuery. In Vue, the syntax uses a <code>v-on</code> directive (more on what directives are later).</p>
+
+<pre><code class="language-html">&lt;button v-on:click=&quot;doSomething&quot;&gt;Click here&lt;/button&gt;
+
+&lt;script type=&quot;text/javascript&quot;&gt;
+  var vm = new Vue({
+    el: &quot;#app&quot;,
+    data: {},
+    methods: {
+      doSomething: function () {
+        return &quot;Something was done&quot;;
+      }
+    }
+  })
+&lt;/script&gt;
+</code></pre>
+
+<ol>
+<li><code>doSomething</code> can be the name of an anonymous function that has been assigned to a variable.</li>
+<li>Or, <code>doSomething</code> can actually be inline JavaScript code.</li>
+</ol>
+
+<h4 id="methods-versus-computed"><code>methods</code> versus <code>computed</code></h4>
+
+<p>This segment was adapted from Bert&rsquo;s reply found in a Stack Overflow <a href="https://stackoverflow.com/questions/44350862/method-vs-computed-in-vue">question</a>. You can also check out the <a href="https://vuejs.org/v2/guide/computed.html">documentation</a> on this.</p>
+
+<p><code>methods</code> is different from <code>computed</code>. A <code>method</code> is just a function that is bound to the Vue instance. It will be evaluated only when we explicitly call it. Like all JavaScript functions, it accepts parameters and will be re-evaluated each time it is called. On the other hand, a <code>computed</code> method (or rather, a <code>computed</code> property), is quite a different beast. A computed value is a derived value that is automatically updated whenever one of the underlying values used to calculate it is updated.</p>
+
+<ul>
+<li>A <code>method</code> method can be called. It is useful wherever any normal JavaScript method is useful.</li>
+<li>A <code>computed</code> method cannot be called. Instead it is automatically &ldquo;called&rdquo; whenever there is a change in some data composing it. We reference a computed property just as we would a data property.</li>
+</ul>
+
+<p>This example was taken from <em>Vue.js in Action</em>.</p>
+
+<pre><code class="language-javascript">var vm = new Vue({
+  data: {
+    length: 8,
+    width: 10
+  },
+  computed: {
+    area: function() {
+      return this.length * this.width;
+    }
+  }
+})
+</code></pre>
+
+<p>The computed property, <code>area</code>, will have an initial value of 15. Any subsequent change to <code>length</code> or <code>width</code> will then (reactively) trigger a series of updates to the application. This is how reactive programming looks like.</p>
+
+<blockquote>
+<p><strong>A  note on directives</strong></p>
+
+<p>A directive is prefixed with a <code>-v</code> to indicate that they are special attributes provided by Vue. We used a few directives, such as <code>v-on</code> in the previous example. They apply special reactive behaviour to the rendered DOM.</p>
+
+<p>There are many different directives, and Vue also provides us with the option of creating our own directives. But it is sufficient to learn a few fundamental ones only. The &ldquo;Getting Started&rdquo; <a href="https://vuejs.org/v2/guide/">guide</a> for Vue covers them.</p>
+</blockquote>
+
+<h3 id="v-show-v-if-v-else"><code>v-show</code>, <code>v-if</code>, <code>v-else</code></h3>
+
+<p>These are simple logic. I will gloss over them.</p>
+
+<h3 id="v-model"><code>v-model</code></h3>
+
+<p>The <code>v-model</code> directive creates a two-way data binding between inputs and the template. This ensures that data is always in sync throughout the entire app. To understand the <code>v-model</code> directive, we first have to consider the <code>v-bind</code> directive, upon which the <code>v-model</code> is written.</p>
+
+<h4 id="the-v-bind-directive">The <code>v-bind</code> directive</h4>
+
+<p>The <code>v-bind</code> directive is used to dynamically bind one or more attributes, or a component prop, to an expression. The directive arises out of the need to assign values to elements, change their style, or assign classes.</p>
+
+<p>For example, let&rsquo;s say we code the following:</p>
+
+<pre><code class="language-html">&lt;div id=&quot;app&quot;&gt;
+  &lt;a href=&quot;{{ url }}&quot;&gt;Hyperlink&lt;/a&gt;
+  &lt;a href=&quot;url&quot;&gt;Hyperlink&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;script type=&quot;text/javascript&quot;&gt;
+  var vm = new Vue({
+    el: &quot;#app&quot;,
+    data: {
+      url: &quot;http://widargoiwan.github.io&quot;
+    }
+  });
+&lt;/script&gt;
+</code></pre>
+
+<p>We will face a problem because the moustache syntax fails to put the correct data into the <code>href</code> attribute. To fix this we have to do the following:</p>
+
+<pre><code class="language-html">&lt;div id=&quot;app&quot;&gt;
+  &lt;a v-bind:href=&quot;url&quot;&gt;Hyperlink&lt;/a&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>To assign values to HTML attributes, we need to bind it with the directive v-bind</p>
+
+    </article>
+  </section>
+
+  <footer>
+    <div>
+      <p class="f6 gray mt6 lh-copy">
+        
+      </p>
+    </div>
+  </footer>
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/highlight.min.js"></script>
+
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+  </body>
+</html>
