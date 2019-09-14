@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>widargo</title>
+    <link>https://widargoiwan.github.io/</link>
+    <description>Recent content on widargo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 15 Sep 2019 02:19:57 +0800</lastBuildDate>
+    
+	<atom:link href="https://widargoiwan.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>HCI Concepts</title>
+      <link>https://widargoiwan.github.io/posts/hci-concepts/</link>
+      <pubDate>Sun, 15 Sep 2019 02:19:57 +0800</pubDate>
+      
+      <guid>https://widargoiwan.github.io/posts/hci-concepts/</guid>
+      <description>Human-computer interaction (HCI) involves designing the user interface (UI) and the user experience (UX). This post will focus on the design principles of used to craft elegant interfaces and sensible experiences.
+Cognition We have to consider cognition first. There are many different types of cognition:
+ Experimental cognition is a state of mind when people perceive, act, and react to events around them intuitively and effortlessly. Reflective cognition involves mental effort, attention, judgement, and decision-making.</description>
+    </item>
+    
+    <item>
+      <title>Adv Sql</title>
+      <link>https://widargoiwan.github.io/posts/adv-sql/</link>
+      <pubDate>Tue, 10 Sep 2019 14:38:01 +0800</pubDate>
+      
+      <guid>https://widargoiwan.github.io/posts/adv-sql/</guid>
+      <description>This post concludes my learning of SQL. In the first post, we covered a lot of ground:
+ The mechanics of the SELECT statement. Commands for CRUD, being CREATE, UPDATE, DELETE. Set operations: union, intersect, except Subqueries, i.e., WHERE appended with exists, in, some/any, all, and unique. Aggregate functions  We briefly covered joins as well, but I will cover it again here because I think it is quite important.</description>
+    </item>
+    
+    <item>
+      <title>The Entity-Relationship (ER) Model</title>
+      <link>https://widargoiwan.github.io/posts/er/</link>
+      <pubDate>Tue, 10 Sep 2019 10:38:16 +0800</pubDate>
+      
+      <guid>https://widargoiwan.github.io/posts/er/</guid>
+      <description>The task of creating a database application begins with the needs of the target users. For small applications it is feasible for a database designer who understand the applications to decide directly on the relations that are created, their attributes, and their constraints. Such a direct design process is difficult for real-world applications because they are often highly complex.
+The database design process must then be split into several phases.</description>
+    </item>
+    
+    <item>
+      <title>Intermediate SQL</title>
+      <link>https://widargoiwan.github.io/posts/inter-sql/</link>
+      <pubDate>Mon, 09 Sep 2019 18:13:54 +0800</pubDate>
+      
+      <guid>https://widargoiwan.github.io/posts/inter-sql/</guid>
+      <description>Conditional expressions Conditional expressions allow us to use insert if/else logic into our SELECT statements. In Postgres (and SQL in general, since this is not a Postgres-specific thing), this is done with the CASE modifier, which comes after the SELECT clause. Recall the syntax for the SELECT clause:
+SELECT (DISTINCT) * FROM relation WHERE cond_1 GROUP BY attrb_1 HAVING cond_2 ORDER BY attrb_2 LIMIT num  Conditional expressions come after the SELECT statement, with the CASE modifier:</description>
+    </item>
+    
+    <item>
+      <title>A Bootstrap brief</title>
+      <link>https://widargoiwan.github.io/posts/boostrap-brief/</link>
+      <pubDate>Sun, 08 Sep 2019 21:15:43 +0800</pubDate>
+      
+      <guid>https://widargoiwan.github.io/posts/boostrap-brief/</guid>
+      <description>I use Bootstrap because it&amp;rsquo;s comparatively easier than hardcoding CSS into the application. I think a formal summary of Bootstrap would be helpful.</description>
+    </item>
+    
+    <item>
+      <title>A Vue of things</title>
+      <link>https://widargoiwan.github.io/posts/vue-js-intro/</link>
+      <pubDate>Sun, 08 Sep 2019 19:52:00 +0800</pubDate>
+      
+      <guid>https://widargoiwan.github.io/posts/vue-js-intro/</guid>
+      <description>I previously worked on a website application using Bootstrap and jQuery. So naturally I gravitate towards these frameworks whenever I do web coding. But it turns out that I never considered Vue.js before, and I always thought of Vue.js as something like Bootstrap (I&amp;rsquo;m wrong, by the way). Vue.js is something more like jQuery in addition to other equally impressive frameworks like React and Angular. I actually wanted to learn React on my own, but since I have to use Vue this time around, I decided to learn it instead.</description>
+    </item>
+    
+    <item>
+      <title>Creational design patterns</title>
+      <link>https://widargoiwan.github.io/posts/creational-design-patterns/</link>
+      <pubDate>Sat, 07 Sep 2019 01:09:32 +0800</pubDate>
+      
+      <guid>https://widargoiwan.github.io/posts/creational-design-patterns/</guid>
+      <description>As was written in the previous post, design patterns can be categorised according to purpose (creational, structural, and behavioural) and scope (applying to classes or applying to objects). Today we&amp;rsquo;ll focus on creational design patterns, which have to do with instantiation and abstracting away that instantiation process. What is instantiation, though? It is the act of creating an object from a given class. Creational design patterns are then further classified according to their scope:</description>
+    </item>
+    
+    <item>
+      <title>Beginner SQL</title>
+      <link>https://widargoiwan.github.io/posts/begin-sql/</link>
+      <pubDate>Tue, 03 Sep 2019 11:10:11 +0800</pubDate>
+      
+      <guid>https://widargoiwan.github.io/posts/begin-sql/</guid>
+      <description>The Structured Query Language (SQL) or Sequel is a declarative programming language that is not Turing-complete. SQL is made up of the following components:
+ Data definition language (DDL) that specifies information about relations. Data manipulation language (DML) that provides CRUD capabilities.  The DDL provides the following features, which are sometimes listed under SQL as separate components as well.
+ Specifying integrity constraints. Defining views of the data. Specifying the start and end of transactions.</description>
+    </item>
+    
+    <item>
+      <title>Design patterns: what are they?</title>
+      <link>https://widargoiwan.github.io/posts/design-patterns-intro/</link>
+      <pubDate>Fri, 02 Aug 2019 10:30:00 +0800</pubDate>
+      
+      <guid>https://widargoiwan.github.io/posts/design-patterns-intro/</guid>
+      <description>Software engineering is a messy process, but so is every creative human activity. Sometimes, I do wonder whether it is true that software engineering can be said to be a branch of &amp;ldquo;engineering&amp;rdquo;. I leave that debate to another day, but in no uncertain terms, creating software is messy and often requires a lot of commitment, collaboration, and compromise from all stakeholders. In all my software engineering projects, I have not encountered a project that is smooth sailing from the onset and ends on a smooth sailing note.</description>
+    </item>
+    
+  </channel>
+</rss>

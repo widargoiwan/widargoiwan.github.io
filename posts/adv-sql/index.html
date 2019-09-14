@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html
+  class=""
+  lang="en-us"
+  prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#"
+>
+  <head>
+    <meta charset="utf-8" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="description" content="" />
+<meta name="HandheldFriendly" content="True" />
+<meta name="MobileOptimized" content="320" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+<meta name="keywords" content="">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content="" />
+<meta property="og:title" content="Adv Sql" />
+<meta property="og:site_name" content="widargo" />
+<meta property="og:image" content="" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image:width" content="" />
+<meta property="og:image:height" content="" />
+<meta property="og:url" content="https://widargoiwan.github.io/posts/adv-sql/" />
+<meta property="og:locale" content="en-us" />
+<meta property="article:published_time" content="2019-09-10
+" /> <meta property="article:modified_time" content="2019-09-10
+" />
+
+
+
+
+
+
+    <title>Adv Sql</title>
+    <link rel="canonical" href="https://widargoiwan.github.io/posts/adv-sql/" />
+
+
+    <link
+  rel="stylesheet"
+  href="https://unpkg.com/tachyons@4.11.1/css/tachyons.min.css"
+/>
+
+<link rel="stylesheet" href="https://widargoiwan.github.io/css/style.css" />
+
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/highlightjs@9.12.0/styles/github-gist.css"
+/>
+
+<script src="https://kit.fontawesome.com/d3737c8002.js"></script>
+
+
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  </head>
+
+<body
+  lang="en-us"
+  class="sans-serif w-90 w-60-ns center center-ns mv2 mv5-ns"
+  itemscope
+  itemtype="http://schema.org/Article"
+>
+  
+  <span class="b">/ </span>
+  <a
+    href="https://widargoiwan.github.io/"
+    class="b bb bw1 pb1 no-underline black"
+    >widargo</a
+  >
+
+  <span class="b">/ </span>
+  <a
+    href="../"
+    class="b bb bw1 pb1 no-underline black"
+    >posts</a
+  >
+
+  <section id="main" class="mt5">
+    <h1 itemprop="name" id="title">Adv Sql</h1>
+    <span class="f6 gray">September 10, 2019</span>
+
+    <article itemprop="articleBody" id="content" class="w-90 lh-copy">
+      <p>This post concludes my learning of SQL. In the first <a href="/posts/begin-sql/">post</a>, we covered a lot of ground:</p>
+
+<ul>
+<li>The mechanics of the <code>SELECT</code> statement.</li>
+<li>Commands for CRUD, being <code>CREATE</code>, <code>UPDATE</code>, <code>DELETE</code>.</li>
+<li>Set operations: <code>union</code>, <code>intersect</code>, <code>except</code></li>
+<li>Subqueries, i.e., <code>WHERE</code> appended with <code>exists</code>, <code>in</code>, <code>some/any</code>, <code>all</code>, and <code>unique</code>.</li>
+<li>Aggregate functions</li>
+</ul>
+
+<p>We briefly covered <em>joins</em> as well, but I will cover it again here because I think it is quite important.</p>
+
+<p>In the intermediate <a href="/posts/inter-sql/">post</a>, we covered:</p>
+
+<ul>
+<li>Conditional <code>CASE ... WHEN ... THEN ...</code> expressions and the specific case of <code>NULLIF (x, y)</code> which expands to <code>WHEN (x = y) THEN ...</code>.</li>
+<li>The <code>COALESCE</code> modifier, which collapses multiple attributes into a single column.</li>
+</ul>
+
+<p>In this post we will cover the following.</p>
+
+<ul>
+<li>Views</li>
+<li>Joins</li>
+</ul>
+
+    </article>
+  </section>
+
+  <footer>
+    <div>
+      <p class="f6 gray mt6 lh-copy">
+        
+      </p>
+    </div>
+  </footer>
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/highlight.min.js"></script>
+
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+  </body>
+</html>
