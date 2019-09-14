@@ -6,48 +6,10 @@
     <description>Recent content in Posts on widargo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 10 Sep 2019 10:38:16 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 07 Sep 2019 01:09:32 +0800</lastBuildDate>
     
 	<atom:link href="https://widargoiwan.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>The Entity-Relationship (ER) Model</title>
-      <link>https://widargoiwan.github.io/posts/er/</link>
-      <pubDate>Tue, 10 Sep 2019 10:38:16 +0800</pubDate>
-      
-      <guid>https://widargoiwan.github.io/posts/er/</guid>
-      <description>The task of creating a database application begins with the needs of the target users. For small applications it is feasible for a database designer who understand the applications to decide directly on the relations that are created, their attributes, and their constraints. Such a direct design process is difficult for real-world applications because they are often highly complex.
-The database design process must then be split into several phases.</description>
-    </item>
-    
-    <item>
-      <title>Intermediate SQL</title>
-      <link>https://widargoiwan.github.io/posts/inter-sql/</link>
-      <pubDate>Mon, 09 Sep 2019 18:13:54 +0800</pubDate>
-      
-      <guid>https://widargoiwan.github.io/posts/inter-sql/</guid>
-      <description>Conditional expressions Conditional expressions allow us to use insert if/else logic into our SELECT statements. In Postgres (and SQL in general, since this is not a Postgres-specific thing), this is done with the CASE modifier, which comes after the SELECT clause. Recall the syntax for the SELECT clause:
-SELECT (DISTINCT) * FROM relation WHERE cond_1 GROUP BY attrb_1 HAVING cond_2 ORDER BY attrb_2 LIMIT num  Conditional expressions come after the SELECT statement, with the CASE modifier:</description>
-    </item>
-    
-    <item>
-      <title>A Bootstrap brief</title>
-      <link>https://widargoiwan.github.io/posts/boostrap-brief/</link>
-      <pubDate>Sun, 08 Sep 2019 21:15:43 +0800</pubDate>
-      
-      <guid>https://widargoiwan.github.io/posts/boostrap-brief/</guid>
-      <description>I use Bootstrap because it&amp;rsquo;s comparatively easier than hardcoding CSS into the application. I think a formal summary of Bootstrap would be helpful.</description>
-    </item>
-    
-    <item>
-      <title>A Vue of things</title>
-      <link>https://widargoiwan.github.io/posts/vue-js-intro/</link>
-      <pubDate>Sun, 08 Sep 2019 19:52:00 +0800</pubDate>
-      
-      <guid>https://widargoiwan.github.io/posts/vue-js-intro/</guid>
-      <description>I previously worked on a website application using Bootstrap and jQuery. So naturally I gravitate towards these frameworks whenever I do web coding. But it turns out that I never considered Vue.js before, and I always thought of Vue.js as something like Bootstrap (I&amp;rsquo;m wrong, by the way). Vue.js is something more like jQuery in addition to other equally impressive frameworks like React and Angular. I actually wanted to learn React on my own, but since I have to use Vue this time around, I decided to learn it instead.</description>
-    </item>
     
     <item>
       <title>Creational design patterns</title>
@@ -56,17 +18,6 @@ SELECT (DISTINCT) * FROM relation WHERE cond_1 GROUP BY attrb_1 HAVING cond_2 OR
       
       <guid>https://widargoiwan.github.io/posts/creational-design-patterns/</guid>
       <description>As was written in the previous post, design patterns can be categorised according to purpose (creational, structural, and behavioural) and scope (applying to classes or applying to objects). Today we&amp;rsquo;ll focus on creational design patterns, which have to do with instantiation and abstracting away that instantiation process. What is instantiation, though? It is the act of creating an object from a given class. Creational design patterns are then further classified according to their scope:</description>
-    </item>
-    
-    <item>
-      <title>Beginner SQL</title>
-      <link>https://widargoiwan.github.io/posts/begin-sql/</link>
-      <pubDate>Tue, 03 Sep 2019 11:10:11 +0800</pubDate>
-      
-      <guid>https://widargoiwan.github.io/posts/begin-sql/</guid>
-      <description>The Structured Query Language (SQL) or Sequel is a declarative programming language that is not Turing-complete. SQL is made up of the following components:
- Data definition language (DDL) that specifies information about relations. Data manipulation language (DML) that provides CRUD capabilities.  The DDL provides the following features, which are sometimes listed under SQL as separate components as well.
- Specifying integrity constraints. Defining views of the data. Specifying the start and end of transactions.</description>
     </item>
     
     <item>
