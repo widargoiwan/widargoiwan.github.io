@@ -19,7 +19,7 @@
 
 <meta property="og:type" content="article" />
 <meta property="og:description" content="" />
-<meta property="og:title" content="Adv Sql" />
+<meta property="og:title" content="Advanced SQL" />
 <meta property="og:site_name" content="widargo" />
 <meta property="og:image" content="" />
 <meta property="og:image:type" content="image/jpeg" />
@@ -36,7 +36,7 @@
 
 
 
-    <title>Adv Sql</title>
+    <title>Advanced SQL</title>
     <link rel="canonical" href="https://widargoiwan.github.io/posts/adv-sql/" />
 
 
@@ -82,11 +82,13 @@
   >
 
   <section id="main" class="mt5">
-    <h1 itemprop="name" id="title">Adv Sql</h1>
+    <h1 itemprop="name" id="title">Advanced SQL</h1>
     <span class="f6 gray">September 10, 2019</span>
 
     <article itemprop="articleBody" id="content" class="w-90 lh-copy">
-      <p>This post concludes my learning of SQL. In the first <a href="/posts/begin-sql/">post</a>, we covered a lot of ground:</p>
+      
+
+<p>This post concludes my learning of SQL. In the first <a href="/posts/begin-sql/">post</a>, we covered a lot of ground:</p>
 
 <ul>
 <li>The mechanics of the <code>SELECT</code> statement.</li>
@@ -108,9 +110,103 @@
 <p>In this post we will cover the following.</p>
 
 <ul>
-<li>Views</li>
 <li>Joins</li>
+<li>More subqueries</li>
+<li>Views</li>
 </ul>
+
+<h2 id="joins">Joins</h2>
+
+<p>Joins are usually deployed in queries against multiple tables. This creates a result table that has columns from both tables included in the result set. The basic syntax of a join is:</p>
+
+<pre><code class="language-sql">SELECT {attributes} FROM {table_1} AS {name_1}
+JOIN {table_2} AS {name_2}
+ON {condition}
+</code></pre>
+
+<p>Of course as we have seen in previous posts, the <code>AS</code> keyword is extraneous. Omitting the <code>ON</code> clause will result in a <em>Cartesian product</em> or <em>cross product</em> of the two tables, in which every relation is combined with every other relation in the two tables. This creates a permutation of the two tables. For this reason, such a join is known as a <em>cross join</em>.</p>
+
+<h3 id="types-of-joins">Types of Joins</h3>
+
+<p>When we specify the <code>ON</code> condition, it would result in an inner join. The two tables must have a common attribute that helps to identify them. The <code>{condition}</code> takes the form of:</p>
+
+<pre><code class="language-sql">SELECT {attributes} FROM {table_1} AS {name_1}
+JOIN {table_2} AS {name_2}
+ON name_1.attribute = name_2.attribute
+</code></pre>
+
+<p>There is more than one way to join tables in SQL. The type of join that we use is primarily dependent on how we want to retrieve the data.</p>
+
+<ul>
+<li><code>JOIN</code> is the same as <code>INNER JOIN</code>, but if a condition is not specified, the result is a cross join.</li>
+<li><code>LEFT JOIN</code> returns every row from the left table, plus rows that match values in the joined column from the right table. When a left table row does not have a match in the right table, the result shows no values from the right table.</li>
+<li><code>RIGHT JOIN</code> returns every row from the right table, plus rows that match values in the joined column from the left table. When a right table row does not have a match in the left table, the result shows no values from the left table.</li>
+<li><code>FULL OUTER JOIN</code> returns every row from both tables and matches rows; then joins the rows where values in the joined columns match. If there is no match for a value in either the left or right table, then the query result contains an empty row for the outer table.</li>
+<li><code>CROSS JOIN</code> returns every possible combination of rows from both tables.</li>
+</ul>
+
+<p>The <code>NULL</code> value in each tuple can be used to find rows with missing values. For example, if we do a <code>LEFT JOIN</code>, <code>RIGHT JOIN</code>, or <code>FULL OUTER JOIN</code>, some tuples in the result set may be <code>NULL</code>. This allows us to embed the join into a <code>SELECT</code> clause to find specific matches:</p>
+
+<pre><code class="language-sql">SELECT *
+FROM A AS a FULL OUTER JOIN B as b
+ON a.id = b.id
+WHERE a.id = NULL;
+</code></pre>
+
+<p>In other words, we filter the results that are not <code>NULL</code>.</p>
+
+<h2 id="advanced-subquery">Advanced Subquery</h2>
+
+<p>In this section we consider advanced subquery syntax. We cover the following:</p>
+
+<ul>
+<li>Subqueries and joins</li>
+<li>Subqueries as inserted attributes/column</li>
+</ul>
+
+<h3 id="subqueries-and-joins">Subqueries and Joins</h3>
+
+<p>We can make our SQL queries even more complex by embedding subqueries into join syntax. Because tables derived from subqueries (i.e., derived tables) are regular tables, we can join them just like regular tables. Joining derived tables allows us to perform multiple preprocessing steps, before arriving at the result.</p>
+
+<pre><code class="language-sql">SELECT *
+FROM ( SELECT * FROM ... ) AS a
+JOIN ( SELECT * FROM ... ) AS b
+ON a.id = b.id
+WHERE {condition};
+</code></pre>
+
+<h2 id="subqueries-as-attributes">Subqueries as Attributes</h2>
+
+<p>We can generate new columns of data with subqueries by placing a subquery in the column list after the <code>SELECT</code> clause. This is usually achieved by using a single value from an aggregate.</p>
+
+<pre><code class="language-sql">SELECT *, (SELECT count(country) FROM data GROUP BY (country)) AS country_count
+FROM table;
+</code></pre>
+
+<h2 id="views">Views</h2>
+
+<p>A view is a virtual table that is dynamically created using a saved query. Every time we access theview, the saved query runs automatically and returns the result. A view is similar to a regular table: it may be queried, joined, and update/delete values from the original table that it was derived from. Views are what they describe: &ldquo;views&rdquo; of the table, providing a subset of attributes for certain users to see. To createa a view, the syntax is:</p>
+
+<pre><code class="language-sql">CREATE OR REPLACE VIEW view_name AS
+SELECT attribute_1,
+          attribute_2,
+          attribute_3,
+          attribute_4
+FROM data;
+</code></pre>
+
+<p>We can use the full <code>SELECT</code> clause here, but we omit the rest of the details for brevity. Following which, we may choose to update or insert data in the underlying table that a view queries, as long as the view <em>meets certain conditions</em>:</p>
+
+<ol>
+<li>The view must reference a single table.</li>
+<li>The view must not contain <code>WITH</code>, <code>DISTINCT</code>, <code>GROUP BY</code>, <code>HAVING</code>, <code>LIMIT</code>, or <code>OFFSET</code> clauses.</li>
+<li>The view must not contain set operations <code>UNION</code>, <code>INTERSECT</code> or <code>EXCEPT</code>.</li>
+<li>The view must not contain any aggregates, window functions or set-returning functions.</li>
+</ol>
+
+<p>Other restrictions may be found (here)[<a href="https://www.postgresql.org/docs/current/sql-createview.html">https://www.postgresql.org/docs/current/sql-createview.html</a>].</p>
+
+<p>The syntax for inserting, updating and deleting tuples from views is the same as their counterpart.</p>
 
     </article>
   </section>

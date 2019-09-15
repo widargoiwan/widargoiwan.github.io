@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html
+  class=""
+  lang="en-us"
+  prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#"
+>
+  <head>
+    <meta charset="utf-8" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="description" content="" />
+<meta name="HandheldFriendly" content="True" />
+<meta name="MobileOptimized" content="320" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+<meta name="keywords" content="">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content="" />
+<meta property="og:title" content="Keys in Databases" />
+<meta property="og:site_name" content="widargo" />
+<meta property="og:image" content="" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image:width" content="" />
+<meta property="og:image:height" content="" />
+<meta property="og:url" content="https://widargoiwan.github.io/posts/database-keys/" />
+<meta property="og:locale" content="en-us" />
+<meta property="article:published_time" content="2019-09-15
+" /> <meta property="article:modified_time" content="2019-09-15
+" />
+
+
+
+
+
+
+    <title>Keys in Databases</title>
+    <link rel="canonical" href="https://widargoiwan.github.io/posts/database-keys/" />
+
+
+    <link
+  rel="stylesheet"
+  href="https://unpkg.com/tachyons@4.11.1/css/tachyons.min.css"
+/>
+
+<link rel="stylesheet" href="https://widargoiwan.github.io/css/style.css" />
+
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/highlightjs@9.12.0/styles/github-gist.css"
+/>
+
+<script src="https://kit.fontawesome.com/d3737c8002.js"></script>
+
+
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  </head>
+
+<body
+  lang="en-us"
+  class="sans-serif w-90 w-60-ns center center-ns mv2 mv5-ns"
+  itemscope
+  itemtype="http://schema.org/Article"
+>
+  
+  <span class="b">/ </span>
+  <a
+    href="https://widargoiwan.github.io/"
+    class="b bb bw1 pb1 no-underline black"
+    >widargo</a
+  >
+
+  <span class="b">/ </span>
+  <a
+    href="../"
+    class="b bb bw1 pb1 no-underline black"
+    >posts</a
+  >
+
+  <section id="main" class="mt5">
+    <h1 itemprop="name" id="title">Keys in Databases</h1>
+    <span class="f6 gray">September 15, 2019</span>
+
+    <article itemprop="articleBody" id="content" class="w-90 lh-copy">
+      
+
+<p>Having gone through the bulk of SQL without a theoretical framework, other than ER diagrams, I believe that it is time to consider the concept of <em>keys</em> in databases. Keys are fundamental to relations: they are supposed to uniquely identify each tuple in a relation.</p>
+
+<p>There are three types of keys that are important:</p>
+
+<ol>
+<li>A <strong>superkey</strong> is a set of (one or more) attributes that uniquely identifies a tuple in the relation. A superkey may contain extraneous attributes. The set of all attributes uniquely identifies each tuple, and it is considered a superkey.</li>
+<li>A <strong>candidate key</strong> is a set of (one or more) attributes that uniquely identifies a tuple in the relation, for which no proper subset is a superkey. In other words, the set for a candidate key is a superkey from which all extraneous attributes have been removed.</li>
+<li>A <strong>primary key</strong> is a candidate key that is chosen arbitrarily by the database designer as the principal means of identifying tuples in a relation.</li>
+</ol>
+
+<p>A key, whether as a primary, candidate or super key, is a property of the entire relation, rather than of the individual tuples. Any tuple is prohibited from having the same value on the key attributes at the same time.</p>
+
+<h3 id="candidate-keys">Candidate Keys</h3>
+
+<p>There are also a couple more things to note for candidate keys:</p>
+
+<ol>
+<li>A candidate key can never be <code>null</code> or empty.</li>
+<li>There can be more than one candidate key for each table.</li>
+</ol>
+
+<p>The use of keys naturally leads to the setting of constraints on the relation. This allows us to design a database that is logically related.</p>
+
+    </article>
+  </section>
+
+  <footer>
+    <div>
+      <p class="f6 gray mt6 lh-copy">
+        
+      </p>
+    </div>
+  </footer>
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/highlight.min.js"></script>
+
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+  </body>
+</html>
