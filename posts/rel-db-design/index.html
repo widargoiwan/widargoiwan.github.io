@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html
+  class=""
+  lang="en-us"
+  prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#"
+>
+  <head>
+    <meta charset="utf-8" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="description" content="" />
+<meta name="HandheldFriendly" content="True" />
+<meta name="MobileOptimized" content="320" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+<meta name="keywords" content="database,
+">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content="" />
+<meta property="og:title" content="Designing relational databases" />
+<meta property="og:site_name" content="widargo" />
+<meta property="og:image" content="" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image:width" content="" />
+<meta property="og:image:height" content="" />
+<meta property="og:url" content="https://widargoiwan.github.io/posts/rel-db-design/" />
+<meta property="og:locale" content="en-us" />
+<meta property="article:published_time" content="2019-09-15
+" /> <meta property="article:modified_time" content="2019-09-15
+" />
+
+
+<meta property="article:tag" content="database" />
+
+
+
+
+
+
+    <title>Designing relational databases</title>
+    <link rel="canonical" href="https://widargoiwan.github.io/posts/rel-db-design/" />
+
+
+    <link
+  rel="stylesheet"
+  href="https://unpkg.com/tachyons@4.11.1/css/tachyons.min.css"
+/>
+
+<link rel="stylesheet" href="https://widargoiwan.github.io/css/style.css" />
+
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/highlightjs@9.12.0/styles/github-gist.css"
+/>
+
+<script src="https://kit.fontawesome.com/d3737c8002.js"></script>
+
+
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  </head>
+
+<body
+  lang="en-us"
+  class="sans-serif w-90 w-60-ns center center-ns mv2 mv5-ns"
+  itemscope
+  itemtype="http://schema.org/Article"
+>
+  
+  <span class="b">/ </span>
+  <a
+    href="https://widargoiwan.github.io/"
+    class="b bb bw1 pb1 no-underline black"
+    >widargo</a
+  >
+
+  <span class="b">/ </span>
+  <a
+    href="../"
+    class="b bb bw1 pb1 no-underline black"
+    >posts</a
+  >
+
+  <section id="main" class="mt5">
+    <h1 itemprop="name" id="title">Designing relational databases</h1>
+    <span class="f6 gray">September 15, 2019</span>
+
+    <article itemprop="articleBody" id="content" class="w-90 lh-copy">
+      
+
+<p>The goal of relational database design is to produce a set of relation schemas that have the features:</p>
+
+<ol>
+<li>Store information without redundancy.</li>
+<li>Allows us to retrieve information easily.</li>
+</ol>
+
+<p>This is achieved by designing schemas that are in an appropriate normal form. To determine whether a relation schema is in one of the desirable normal forms, we need information about the problem domain. Usually, this is modelled using a well-designed Entity-Relationship (ER) diagram. A formal approach to relational database design is based on the notion of functional dependencies. We define normal forms in terms of functional dependencies and other types of data dependencies.</p>
+
+<h2 id="functional-dependencies">Functional Dependencies</h2>
+
+<p>A functional dependency is a rule that arises when the database designer (you, in this case) recognises a situation where a schema ought to be split or decomposed into two or more schemas. Finding the right decomposition is harder for schemas with a large number of attributes and several functional dependencies. Furthermore, not all schema decompositions are useful. Such schema decompositions are not useful because the decomposition leads to a loss of information. These schema decompositions are thus known as <em>lossy decompositions</em>, and their converse (which we aim for), are known as <em>lossless decompositions</em> that maintain the information in the database.</p>
+
+<h3 id="atomic-domains-and-the-first-normal-form">Atomic domains and the first normal form</h3>
+
+<p>The ER model allows entity sets and relation sets to have attributes that have a degree of substructure. Attributes existing within each relation do not have any substructure. A domain is <strong>atomic</strong> if elements of the domain are considered to be indivisible units. Ordinarily, the domain of each attribute refers to the <em>type</em>, i.e., the range of values that the values in that attribute can take. These are usually the normal programming types.</p>
+
+<blockquote>
+<p>A relation schema <code>R</code> is in the <strong>first normal form</strong> (1NF) if the domains of all attributes of <code>R</code> are atomic. That is to say, each attribute does not have a substructure behind it. If, for example, a table has a foreign key, then the referencing relation is NOT in the first normal form because the referenced relation has another set of values.</p>
+
+<p>According to Codd&rsquo;s original paper, a relation is said to be in 1NF when none of its domains have any sets as elements.</p>
+</blockquote>
+
+<p>For example, consider a relation that uses identification numbers in the form of &ldquo;AB123&rdquo;. Such identification numbers may be divided into smaller units. Thus, the attribute is not atomic. If a relation schema had an attribute whose domain consists of identification numbers, the schema is not in 1NF. In order to convert it into 1NF, we have to decompose that structure from &ldquo;AB123&rdquo; into &ldquo;AB&rdquo; + 123. Yet, of course, it really depends: if the &ldquo;AB&rdquo; does not have any significant meaning on its own (for example, it could stand for the faculty number), then we could view the identification number as an atomic value, that is, a <code>varchar(5)</code>. As we observed earlier, the unnecessary decomposition of attributes may lead to redundancy.</p>
+
+<h3 id="decomposition-using-functional-dependencies">Decomposition using functional dependencies</h3>
+
+<p>There is a formalised methodology for decomposing in a logical way. This is known as analysis through <em>functional dependencies</em>.</p>
+
+<h4 id="notation">Notation</h4>
+
+<ol>
+<li>The notation <code>r(R)</code> is used to show that the schema is for relation <code>r</code>, with <code>R</code> denoting the set of attributes.</li>
+<li>When a set of attributes is a superkey, the set is denoted by <code>K</code>. A superkey pertains to a specific relation schema, so it is said that <code>K</code> is a superkey of <code>r(R)</code>.</li>
+<li>A lowercase name is used for relations, such as students.</li>
+<li>A relation has a particular value at a given time. That is referred to as an <em>instance</em>, i.e., an <em>instance</em> of <code>r</code>.</li>
+</ol>
+
+<h4 id="keys-and-functional-dependencies">Keys and functional dependencies</h4>
+
+<p>It gets a little bit mathy here.</p>
+
+<p>A database models a set of entities and relationships in the real world. There are a variety of constraints (rules) on the data in the real world. An instance of a relation that satisfies all such real-world constraints is known as a <em>legal instance</em> of the relation. A legal instance of a database is therefore one in which all the relation instances are legal instances.</p>
+
+<p>While a superkey is a set of attributes that uniquely identifies an entire tuple (and may or may not contain extraneous information, as we have seen <a href="/posts/database-keys/]">here</a>, a functional dependency allows us to express constraints that uniquely identify the values of certain attributes. Given a relation schema <code>r(R)</code>, consider that <code>a is a proper subset of R</code> and <code>b is a proper subset of R</code>, then:</p>
+
+<ul>
+<li>Given an instance of <code>r(R)</code>, the instance satisfies the functional dependency <code>a -&gt; b</code> if for all pairs of tuples, <code>t1</code> and <code>t2</code>, in the instance, such that <code>t1[a] = t2[a]</code>, then it is also the case that <code>t1[b] = t2[b]</code>.</li>
+<li>The functional dependency <code>a -&gt; b</code> is said to hold on the schema <code>r(R)</code> if, in every legal instance of <code>r(R)</code>, it satisfies the functional dependency.</li>
+</ul>
+
+<p>Using the functional-dependency notation, K is a superkey of <code>r(R)</code> if the functional dependency <code>K -&gt; R</code> holds on <code>r(R)</code>. In other words, K is a superkey if, for every legal instance of <code>r(R)</code>, for every pair of tuples <code>t1</code>, <code>t2</code> from that instance, whenever <code>t1[K] = t2[K]</code>, it is also the case that <code>t1[R] = t2[R]</code>.</p>
+
+<p><strong>What this means is this.</strong> A functional dependency is a constraint between two sets of attributes in a relation. Thus, when we say <code>X -&gt; Y</code>, the values of <code>Y</code> are determined by the values of <code>X</code>. Two tuples sharing the same values of <code>X</code> will, by definition, have the same values of <code>Y</code>. Ultimately, it is most useful to understand the functional dependency as what values determining what other values. There may be times where there exists no functional dependency, as between <code>id</code> and <code>age</code> or <code>name</code> and <code>age</code>, while there are other times in which there are functional dependencies. For instance, between <code>room_number, building_block -&gt; capacity</code>. We should ask ourselves the question: does <code>X</code> determine <code>Y</code> in anyway?</p>
+
+<p>We use functional dependencies in two ways:</p>
+
+<ol>
+<li>To test instances of relations to see whether they satisfy a given set <code>F</code> of functional dependencies.</li>
+<li>To specify constraints on the set of legal relations.</li>
+</ol>
+
+<p>For example, consider the schema: <code>Students(student_id, faculty, specialisation, dorm)</code> and the functional dependency <code>specialisation -&gt; faculty</code>, then we note that the pair of attributes, <code>student_id, specialisation</code> forms a superkey for <code>Students</code>, such that <code>student_id, specialisation -&gt; faculty, dorm</code>.</p>
+
+<p>Some functional dependencies are said to be trivial because they are satisfied by all relations. For example, <code>A -&gt; A</code> is satisfied by all relations involving the attribute <code>A</code>. In general a functional dependency of the form <code>A -&gt; B</code> is trivial if <code>B is a proper subset of A</code>, because A will always determine the value of B.</p>
+
+<h2 id="normalisation">Normalisation</h2>
+
+<h3 id="motivations-for-normalisation">Motivations for normalisation</h3>
+
+<p>Many problems may arise from a database that is not normalised. Normalisation is a technique of organising a relation into multiple relations to minimise data redundancy. <em>Data redundancy</em> occurs when there is a repetition of similar data at multiple places. Data redundancy is avoided because:</p>
+
+<ul>
+<li>It leads to increased size of the database.</li>
+<li>It leads to insertion anomalies, which usually just compounds the problem.</li>
+<li>It leads to deletion anomalies, leading to loss of data when one relation is completely deleted.</li>
+<li>It leads to updating anomalies, because if there is a change in one attribute, it can lead to inconsistent data.</li>
+</ul>
+
+<p>Normalisation decomposes tables into more tables. It leads to logical separation of data: <strong>divide and rule</strong>. Logical, independent but related data. The three basic forms are: 1NF, 2NF, and 3NF. The advanced normalisation technique is the Boyce-Codd Normal Form (BCNF).</p>
+
+<h3 id="first-normal-form-1nf">First Normal Form (1NF)</h3>
+
+<p>This is step one of the normalisation process. Follow a few basic rules:</p>
+
+<ul>
+<li>Each attribute/column must be an atomic, single value.</li>
+<li>Each attribute/column must be of the same domain/type.</li>
+<li>Each attribute/column must have a unique name.</li>
+<li>The order in which data is stored in the relation does not matter.</li>
+</ul>
+
+<h3 id="second-normal-form-2nf">Second Normal Form (2NF)</h3>
+
+<p>This is step two of the normalisation process. The 2NF relation does not have partial dependencies. A <em>partial dependency</em> occurs when two or more attributes function as the primary key, and another attribute on depends on a subset of those attributes used as the primary key. For example, if <code>student_id, subject_id</code> is the primary key, but only <code>subject_id -&gt; teacher_id</code>, the relation is said to have a partial dependency: the <code>teacher_id</code> has a partial dependency on the primary key. A 2NF relation should not have a partial dependency.</p>
+
+<p>The main objective is to remove the one dependent on the primary key. This may be achieved by moving the attribute into a separate table.</p>
+
+<h3 id="third-normal-form-3nf">Third Normal Form (3NF)</h3>
+
+<p>This is step three of the normalisation process. The 3NF relation does not have transitive dependencies. A <em>transitive dependency</em> occurs when two or more attributes depend on other non-prime attributes. The solution is to take the two sets of attributes that have transitive dependency and put them in a separate table, with the attribute being depended on becoming the primary key of that table.</p>
+
+<h3 id="boyce-codd-normal-form">Boyce-Codd Normal Form</h3>
+
+<p>The BCNF is also known as 3.5 Normal Form. The input table should be in 3NF.</p>
+
+<p>One of the normal forms that we may obtain is Boyce-Codd Normal Form (BCNF). This form eliminates all redundancy that can be discovered based on functional dependencies. However, there may be other types of redundancies remaining. A relation schema <code>R</code> is in BCNF with respect to a set <code>F</code> of functional dependencies if, for all functional dependencies in <code>F+</code> of the form <code>a -&gt; b</code>, where <code>a is a proper subset of R</code> and <code>b is a proper subset of R</code>, at least one of the following holds:</p>
+
+<ul>
+<li><code>a -&gt; b</code> is a trivial functional dependency.</li>
+<li><code>a</code> is a superkey for the schema R.</li>
+</ul>
+
+<p>A database design is in BCNF if each member of the set of relation schemas that constitutes the design is in BCNF. There are two conditions to satisfy:</p>
+
+<ul>
+<li>The relation must be in 3NF.</li>
+<li>For any dependency <code>A -&gt; B</code>, <code>A</code> should be a superkey.</li>
+</ul>
+
+<p>Ultimately, a prime attribute cannot depend on a non-prime attribute.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>For now, we will stop with BCNF tables. I would like to recommend a great resource on 1 to 5NF normalisation <a href="https://www.youtube.com/channel/UCURY4RZois483CPY8prhx7g/videos">here</a>. It&rsquo;s quite a good video series that I referred to when I was studying these topics. Of course, I haven&rsquo;t gone on to 4NF and 5NF tables, which I will consider another time.</p>
+
+    </article>
+  </section>
+
+  <footer>
+    <div>
+      <p class="f6 gray mt6 lh-copy">
+        
+      </p>
+    </div>
+  </footer>
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/highlight.min.js"></script>
+
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+  </body>
+</html>

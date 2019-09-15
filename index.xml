@@ -6,13 +6,23 @@
     <description>Recent content on widargo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 15 Sep 2019 16:36:21 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 15 Sep 2019 18:17:04 +0800</lastBuildDate>
     
 	<atom:link href="https://widargoiwan.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Keys in Databases</title>
+      <title>Designing relational databases</title>
+      <link>https://widargoiwan.github.io/posts/rel-db-design/</link>
+      <pubDate>Sun, 15 Sep 2019 18:17:04 +0800</pubDate>
+      
+      <guid>https://widargoiwan.github.io/posts/rel-db-design/</guid>
+      <description>The goal of relational database design is to produce a set of relation schemas that have the features:
+ Store information without redundancy. Allows us to retrieve information easily.  This is achieved by designing schemas that are in an appropriate normal form. To determine whether a relation schema is in one of the desirable normal forms, we need information about the problem domain. Usually, this is modelled using a well-designed Entity-Relationship (ER) diagram.</description>
+    </item>
+    
+    <item>
+      <title>Using keys in databases</title>
       <link>https://widargoiwan.github.io/posts/database-keys/</link>
       <pubDate>Sun, 15 Sep 2019 16:36:21 +0800</pubDate>
       
@@ -23,7 +33,7 @@ There are three types of keys that are important:
     </item>
     
     <item>
-      <title>HCI Concepts</title>
+      <title>Concepts of interaction design</title>
       <link>https://widargoiwan.github.io/posts/hci-concepts/</link>
       <pubDate>Sun, 15 Sep 2019 02:19:57 +0800</pubDate>
       
@@ -44,7 +54,7 @@ Cognition We have to consider cognition first. There are many different types of
     </item>
     
     <item>
-      <title>The Entity-Relationship (ER) Model</title>
+      <title>Using the entity-relationship model</title>
       <link>https://widargoiwan.github.io/posts/er/</link>
       <pubDate>Tue, 10 Sep 2019 10:38:16 +0800</pubDate>
       
@@ -93,7 +103,7 @@ SELECT (DISTINCT) * FROM relation WHERE cond_1 GROUP BY attrb_1 HAVING cond_2 OR
     </item>
     
     <item>
-      <title>Design patterns: what are they?</title>
+      <title>Design patterns</title>
       <link>https://widargoiwan.github.io/posts/design-patterns-intro/</link>
       <pubDate>Fri, 02 Aug 2019 10:30:00 +0800</pubDate>
       
