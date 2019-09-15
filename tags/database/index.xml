@@ -21,5 +21,57 @@
  Store information without redundancy. Allows us to retrieve information easily.  This is achieved by designing schemas that are in an appropriate normal form. To determine whether a relation schema is in one of the desirable normal forms, we need information about the problem domain. Usually, this is modelled using a well-designed Entity-Relationship (ER) diagram.</description>
     </item>
     
+    <item>
+      <title>Using keys in databases</title>
+      <link>https://widargoiwan.github.io/posts/database-keys/</link>
+      <pubDate>Sun, 15 Sep 2019 16:36:21 +0800</pubDate>
+      
+      <guid>https://widargoiwan.github.io/posts/database-keys/</guid>
+      <description>Having gone through the bulk of SQL without a theoretical framework, other than ER diagrams, I believe that it is time to consider the concept of keys in databases. Keys are fundamental to relations: they are supposed to uniquely identify each tuple in a relation.
+There are three types of keys that are important:
+ A superkey is a set of (one or more) attributes that uniquely identifies a tuple in the relation.</description>
+    </item>
+    
+    <item>
+      <title>Advanced SQL</title>
+      <link>https://widargoiwan.github.io/posts/adv-sql/</link>
+      <pubDate>Tue, 10 Sep 2019 14:38:01 +0800</pubDate>
+      
+      <guid>https://widargoiwan.github.io/posts/adv-sql/</guid>
+      <description>This post concludes my learning of SQL. In the first post, we covered a lot of ground:
+ The mechanics of the SELECT statement. Commands for CRUD, being CREATE, UPDATE, DELETE. Set operations: union, intersect, except Subqueries, i.e., WHERE appended with exists, in, some/any, all, and unique. Aggregate functions  We briefly covered joins as well, but I will cover it again here because I think it is quite important.</description>
+    </item>
+    
+    <item>
+      <title>Using the entity-relationship model</title>
+      <link>https://widargoiwan.github.io/posts/er/</link>
+      <pubDate>Tue, 10 Sep 2019 10:38:16 +0800</pubDate>
+      
+      <guid>https://widargoiwan.github.io/posts/er/</guid>
+      <description>The task of creating a database application begins with the needs of the target users. For small applications it is feasible for a database designer who understand the applications to decide directly on the relations that are created, their attributes, and their constraints. Such a direct design process is difficult for real-world applications because they are often highly complex.
+The database design process must then be split into several phases.</description>
+    </item>
+    
+    <item>
+      <title>Intermediate SQL</title>
+      <link>https://widargoiwan.github.io/posts/inter-sql/</link>
+      <pubDate>Mon, 09 Sep 2019 18:13:54 +0800</pubDate>
+      
+      <guid>https://widargoiwan.github.io/posts/inter-sql/</guid>
+      <description>Conditional expressions Conditional expressions allow us to use insert if/else logic into our SELECT statements. In Postgres (and SQL in general, since this is not a Postgres-specific thing), this is done with the CASE modifier, which comes after the SELECT clause. Recall the syntax for the SELECT clause:
+SELECT (DISTINCT) * FROM relation WHERE cond_1 GROUP BY attrb_1 HAVING cond_2 ORDER BY attrb_2 LIMIT num  Conditional expressions come after the SELECT statement, with the CASE modifier:</description>
+    </item>
+    
+    <item>
+      <title>Beginner SQL</title>
+      <link>https://widargoiwan.github.io/posts/begin-sql/</link>
+      <pubDate>Tue, 03 Sep 2019 11:10:11 +0800</pubDate>
+      
+      <guid>https://widargoiwan.github.io/posts/begin-sql/</guid>
+      <description>The Structured Query Language (SQL) or Sequel is a declarative programming language that is not Turing-complete. SQL is made up of the following components:
+ Data definition language (DDL) that specifies information about relations. Data manipulation language (DML) that provides CRUD capabilities.  The DDL provides the following features, which are sometimes listed under SQL as separate components as well.
+ Specifying integrity constraints. Defining views of the data. Specifying the start and end of transactions.</description>
+    </item>
+    
   </channel>
 </rss>

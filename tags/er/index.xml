@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>er on widargo</title>
+    <link>https://widargoiwan.github.io/tags/er/</link>
+    <description>Recent content in er on widargo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 10 Sep 2019 10:38:16 +0800</lastBuildDate>
+    
+	<atom:link href="https://widargoiwan.github.io/tags/er/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Using the entity-relationship model</title>
+      <link>https://widargoiwan.github.io/posts/er/</link>
+      <pubDate>Tue, 10 Sep 2019 10:38:16 +0800</pubDate>
+      
+      <guid>https://widargoiwan.github.io/posts/er/</guid>
+      <description>The task of creating a database application begins with the needs of the target users. For small applications it is feasible for a database designer who understand the applications to decide directly on the relations that are created, their attributes, and their constraints. Such a direct design process is difficult for real-world applications because they are often highly complex.
+The database design process must then be split into several phases.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>sql on widargo</title>
+    <link>https://widargoiwan.github.io/tags/sql/</link>
+    <description>Recent content in sql on widargo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 10 Sep 2019 14:38:01 +0800</lastBuildDate>
+    
+	<atom:link href="https://widargoiwan.github.io/tags/sql/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Advanced SQL</title>
+      <link>https://widargoiwan.github.io/posts/adv-sql/</link>
+      <pubDate>Tue, 10 Sep 2019 14:38:01 +0800</pubDate>
+      
+      <guid>https://widargoiwan.github.io/posts/adv-sql/</guid>
+      <description>This post concludes my learning of SQL. In the first post, we covered a lot of ground:
+ The mechanics of the SELECT statement. Commands for CRUD, being CREATE, UPDATE, DELETE. Set operations: union, intersect, except Subqueries, i.e., WHERE appended with exists, in, some/any, all, and unique. Aggregate functions  We briefly covered joins as well, but I will cover it again here because I think it is quite important.</description>
+    </item>
+    
+    <item>
+      <title>Intermediate SQL</title>
+      <link>https://widargoiwan.github.io/posts/inter-sql/</link>
+      <pubDate>Mon, 09 Sep 2019 18:13:54 +0800</pubDate>
+      
+      <guid>https://widargoiwan.github.io/posts/inter-sql/</guid>
+      <description>Conditional expressions Conditional expressions allow us to use insert if/else logic into our SELECT statements. In Postgres (and SQL in general, since this is not a Postgres-specific thing), this is done with the CASE modifier, which comes after the SELECT clause. Recall the syntax for the SELECT clause:
+SELECT (DISTINCT) * FROM relation WHERE cond_1 GROUP BY attrb_1 HAVING cond_2 ORDER BY attrb_2 LIMIT num  Conditional expressions come after the SELECT statement, with the CASE modifier:</description>
+    </item>
+    
+    <item>
+      <title>Beginner SQL</title>
+      <link>https://widargoiwan.github.io/posts/begin-sql/</link>
+      <pubDate>Tue, 03 Sep 2019 11:10:11 +0800</pubDate>
+      
+      <guid>https://widargoiwan.github.io/posts/begin-sql/</guid>
+      <description>The Structured Query Language (SQL) or Sequel is a declarative programming language that is not Turing-complete. SQL is made up of the following components:
+ Data definition language (DDL) that specifies information about relations. Data manipulation language (DML) that provides CRUD capabilities.  The DDL provides the following features, which are sometimes listed under SQL as separate components as well.
+ Specifying integrity constraints. Defining views of the data. Specifying the start and end of transactions.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>software-engineering on widargo</title>
+    <link>https://widargoiwan.github.io/tags/software-engineering/</link>
+    <description>Recent content in software-engineering on widargo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 08 Sep 2019 19:52:00 +0800</lastBuildDate>
+    
+	<atom:link href="https://widargoiwan.github.io/tags/software-engineering/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>A Vue of things</title>
+      <link>https://widargoiwan.github.io/posts/vue-js-intro/</link>
+      <pubDate>Sun, 08 Sep 2019 19:52:00 +0800</pubDate>
+      
+      <guid>https://widargoiwan.github.io/posts/vue-js-intro/</guid>
+      <description>I previously worked on a website application using Bootstrap and jQuery. So naturally I gravitate towards these frameworks whenever I do web coding. But it turns out that I never considered Vue.js before, and I always thought of Vue.js as something like Bootstrap (I&amp;rsquo;m wrong, by the way). Vue.js is something more like jQuery in addition to other equally impressive frameworks like React and Angular. I actually wanted to learn React on my own, but since I have to use Vue this time around, I decided to learn it instead.</description>
+    </item>
+    
+    <item>
+      <title>Design patterns</title>
+      <link>https://widargoiwan.github.io/posts/design-patterns-intro/</link>
+      <pubDate>Fri, 02 Aug 2019 10:30:00 +0800</pubDate>
+      
+      <guid>https://widargoiwan.github.io/posts/design-patterns-intro/</guid>
+      <description>Software engineering is a messy process, but so is every creative human activity. Sometimes, I do wonder whether it is true that software engineering can be said to be a branch of &amp;ldquo;engineering&amp;rdquo;. I leave that debate to another day, but in no uncertain terms, creating software is messy and often requires a lot of commitment, collaboration, and compromise from all stakeholders. In all my software engineering projects, I have not encountered a project that is smooth sailing from the onset and ends on a smooth sailing note.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>web-dev on widargo</title>
+    <link>https://widargoiwan.github.io/tags/web-dev/</link>
+    <description>Recent content in web-dev on widargo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 08 Sep 2019 19:52:00 +0800</lastBuildDate>
+    
+	<atom:link href="https://widargoiwan.github.io/tags/web-dev/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>A Vue of things</title>
+      <link>https://widargoiwan.github.io/posts/vue-js-intro/</link>
+      <pubDate>Sun, 08 Sep 2019 19:52:00 +0800</pubDate>
+      
+      <guid>https://widargoiwan.github.io/posts/vue-js-intro/</guid>
+      <description>I previously worked on a website application using Bootstrap and jQuery. So naturally I gravitate towards these frameworks whenever I do web coding. But it turns out that I never considered Vue.js before, and I always thought of Vue.js as something like Bootstrap (I&amp;rsquo;m wrong, by the way). Vue.js is something more like jQuery in addition to other equally impressive frameworks like React and Angular. I actually wanted to learn React on my own, but since I have to use Vue this time around, I decided to learn it instead.</description>
+    </item>
+    
+  </channel>
+</rss>

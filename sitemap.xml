@@ -43,6 +43,16 @@
   </url>
   
   <url>
+    <loc>https://widargoiwan.github.io/tags/sql/</loc>
+    <lastmod>2019-09-10T14:38:01+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://widargoiwan.github.io/tags/er/</loc>
+    <lastmod>2019-09-10T10:38:16+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://widargoiwan.github.io/posts/er/</loc>
     <lastmod>2019-09-10T10:38:16+08:00</lastmod>
   </url>
@@ -58,6 +68,21 @@
   </url>
   
   <url>
+    <loc>https://widargoiwan.github.io/tags/software-engineering/</loc>
+    <lastmod>2019-09-08T19:52:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://widargoiwan.github.io/tags/vue/</loc>
+    <lastmod>2019-09-08T19:52:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://widargoiwan.github.io/tags/web-dev/</loc>
+    <lastmod>2019-09-08T19:52:00+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://widargoiwan.github.io/posts/creational-design-patterns/</loc>
     <lastmod>2019-09-07T01:09:32+08:00</lastmod>
   </url>
@@ -69,6 +94,11 @@
   
   <url>
     <loc>https://widargoiwan.github.io/posts/design-patterns-intro/</loc>
+    <lastmod>2019-08-02T10:30:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://widargoiwan.github.io/tags/design-patterns/</loc>
     <lastmod>2019-08-02T10:30:00+08:00</lastmod>
   </url>
   
